@@ -1,19 +1,36 @@
-/**
- * plugins/vuetify.ts
- *
- * Framework documentation: https://vuetifyjs.com`
- */
+import Vue from 'vue';
 
-// Styles
-import '@mdi/font/css/materialdesignicons.css'
-import 'vuetify/styles'
+// Do not work well with ripple directive
+// import Vuetify from "vuetify/lib";
+// import Vuetify from 'vuetify/lib/framework';
+import Vuetify from 'vuetify';
 
-// Composables
-import { createVuetify } from 'vuetify'
+Vue.use(Vuetify);
 
-// https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
-export default createVuetify({
-  theme: {
-    defaultTheme: 'dark',
-  },
-})
+export default new Vuetify({
+    theme: {
+        /**
+         * Enabling customProperties will also generate a css variable for each theme color,
+         * which you can then use in your components <style> blocks.
+         */
+        options: {
+            customProperties: true,
+        },
+        themes: {
+            light: {
+                // primary: "#1a73e8", // Default primary color
+                error: "#D32F2F",
+                warning: "#e37500",
+            },
+            dark: {
+                // primary: "#1a73e8", // Default primary color
+                error: "#D32F2F",
+                warning: "#e37500",
+                background: "#202124",
+            },
+        },
+    },
+    icons: {
+        iconfont: "md"
+    }
+});
